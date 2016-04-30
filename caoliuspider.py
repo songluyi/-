@@ -48,3 +48,5 @@ if __name__=='__main__':
             caoliu.about_pic(source)
     pool.close()
     pool.join()
+
+# test
