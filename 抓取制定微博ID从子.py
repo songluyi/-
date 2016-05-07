@@ -17,7 +17,7 @@ if(len(sys.argv)>=2):
 else:
     user_id = (int)(raw_input(u"请输入user_id: "))
 
-cookie = {"Cookie": "_T_WM=589c3d3bf912d1b96accadf0e0db4a93; H5_INDEX=3; H5_INDEX_TITLE=sly759; M_WEIBOCN_PARAMS=uicode%3D20000173; SUB=_2A257xcS7DeR1GedG6VAZ8izLyzmIHXVZSezzrDV6PUJbrdANLUbCkW1LHesYttlXujP066WhjXpn9KG7lOK6RA..; SUHB=0XDUVGHeltKVDu; SSOLoginState=1455535339"}
+cookie = {"Cookie": "_T_WM=28453274f2b24cc49fd53c91004d0d1a; SUHB=0rrKYLLSxU_rnJ; M_WEIBOCN_PARAMS=from%3Dhome"}
 url = 'http://weibo.cn/u/%d?filter=1&page=1'%user_id
 
 html = requests.get(url, cookies = cookie).content
