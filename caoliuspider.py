@@ -48,4 +48,4 @@ if __name__=='__main__':
             caoliu.about_pic(source)
     pool.close()
     pool.join()
-#助班电话：18810151578
+
