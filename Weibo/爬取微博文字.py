@@ -20,12 +20,10 @@ for user_id in raw_uid:
   html = requests.get(url, cookies = cookie).content
   selector = etree.HTML(html)
   pageNum = 10
-
   result = ""
   urllist_set = set()
   word_count = 1
-  image_count = 1
-
+  # image_count = 1
   print u'爬虫准备就绪...'
 
   for page in range(1,pageNum+1):
