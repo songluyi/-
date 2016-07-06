@@ -24,7 +24,7 @@ health_a=health_a.strip('\n')           #注意，这里在读入的时候需要
 name_b,place_b,neili_b,wuyi_b,health_b=data_2
 #将武侠世界的单元格列表化，将一去一回作为一个整体命名为新的full——world变量
 world=[x for x in range(1,20)]
-full_world=world+world[::-1][1:19]  #去除19和1这些多余的两个，这个列表类似为【1,2.......，17,18,19,18，.....，2】
+full_world=world+world[::-1][1:18]  #去除19和1这些多余的两个，这个列表类似为【1,2.......，17,18,19,18，.....，2】
 print full_world
 count,block_a,block_b=1,1,1        #这里count作为计数器用来控制下文的while循环，block作为锁，用来判定大侠是否死亡的一把锁
 while count<=N :
