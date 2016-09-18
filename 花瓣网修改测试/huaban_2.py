@@ -40,7 +40,7 @@ from multiprocessing.dummy import Pool as ThreadPool
 
 page_count = 0
 photo_number = 0
-
+down_data=[]
 
 UserAgent = [
     'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0)',
@@ -63,11 +63,11 @@ TimeOut = 30
 #这个user-agent池以后可以考虑借用
 
 
-def downfile(file, img_url):
-    print u"开始下载：", file, img_url
+def downfile(down_data):
+    print u"开始下载：", down_data[0], down_data[1]
     try:
-        resource = requests.get(img_url, stream=True,headers=head).content
-        with open(file, 'wb') as file:
+        resource = requests.get(down_data[1], stream=True,headers=head).content
+        with open(down_data[0], 'wb') as file:
             file.write(resource)
     except Exception as e:
         print("下载失败", e)
@@ -117,11 +117,11 @@ def request_url_download(url):
             if photo_number >= image_numbers:
                 # 结束函数
                 return
-
-            downfile(filename, url_item)
+            down_data.append([filename,url_item])
+            # downfile(filename, url_item)
             photo_number += 1
     request_url_download(url_query+str(page_count))
-
+    return down_data
 
 
 
@@ -139,6 +139,10 @@ if __name__=='__main__':
         os.chdir(down_dir)
     else:
         os.chdir(down_dir)
-    request_url_download(url_query + str(page_count))
+    s=request_url_download(url_query + str(page_count))
+    pool = ThreadPool(8)#使用了一点多线程，发现很有意思。你们可以通过本例来学习。
+    list(pool.map(downfile,s))
+    pool.close()
+    pool.join()
     end_time=time()
     print('共下载%s张素材，耗时%.2fs' %(image_numbers,end_time-start_time))
