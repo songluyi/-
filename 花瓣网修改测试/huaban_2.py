@@ -9,18 +9,6 @@ Contact:    slysly759@gmail.com
  
 -------------------------------------------------------------------------------
 """
-
-# -*- coding: utf-8 -*-
-# 2016/9/18 11:56
-"""
--------------------------------------------------------------------------------
-Function:
-Version:    1.0
-Author:     SLY
-Contact:    slysly759@gmail.com
-
--------------------------------------------------------------------------------
-"""
 #! /usr/bin/python3
 # _encoding:utf-8_
 # Written by liuzhaoyang
@@ -100,7 +88,7 @@ def request_url_download(url):
     '''
     img_query_items = re.findall(pattern, text)
     max_pin_id = 0
-    print(img_query_items)
+    # print(img_query_items)
 
     for url_items in img_query_items:
         max_pin_id = url_items[0]
@@ -140,7 +128,7 @@ if __name__=='__main__':
     else:
         os.chdir(down_dir)
     s=request_url_download(url_query + str(page_count))
-    pool = ThreadPool(8)#使用了一点多线程，发现很有意思。你们可以通过本例来学习。
+    pool = ThreadPool(4)#使用了一点多线程，发现很有意思。你们可以通过本例来学习。
     list(pool.map(downfile,s))
     pool.close()
     pool.join()
